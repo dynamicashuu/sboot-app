@@ -8,7 +8,7 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
 
     timeout-minutes: 10
 
@@ -17,12 +17,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-        - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: 17
-          cache: 'maven'
+      
         
       - name: Inspect environment
         run: |
@@ -38,6 +33,13 @@ jobs:
           lsb_release -a
           echo "----------------------------------------------------------"
       
+
+          - name: Set up JDK
+          uses: actions/setup-java@v3
+          with:
+            distribution: 'temurin'
+            java-version: 17
+            cache: 'maven'
     
 
       - name: Build with Maven
